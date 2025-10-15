@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBme Destaques</title>
+    <link rel ="icon" href="IMG/hbme.png" type="image/x-icon"/>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            background-color:rgba(255, 255, 255, 0.932);
+            color: rgb(255, 255, 255);
+        }
+
+        header{
+            background-color:rgb(27, 27, 31);
+            color:aliceblue;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header img{
+            width: 90px;
+            height: 100px;
+        }
+
+        nav{
+            background-color: rgb(115,15,182);
+        }
+
+        nav ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li{
+            margin: 0 15px;
+        }
+
+        nav ul li a{
+            color:rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover{
+            background-color:rgb(15, 56, 133);
+            border-radius: 5px;
+        }
+
+        .container{
+            max-width: 100%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .conteudo{
+            margin-bottom: 40px;
+        }
+
+        h2{
+            color:rgb(255, 255, 255);
+        }
+
+        .estilo img{
+            max-width: 400px;
+            display: block;
+            margin: 0px auto;
+            margin-right: 30px; 
+        }
+
+        footer{
+            background-color: rgb(0, 0, 0);
+            color: aliceblue;
+            padding: 15px;
+            text-align: center;
+        }
+
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+
+        h4{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+
+        .carrossel {
+            width: 100%;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(167, 142, 255, 0.3);
+            margin-bottom: 40px;
+        }
+
+        .slides {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.5s ease;
+
+        }
+
+        .slide {
+            width: 20%;
+            flex-shrink: 0;
+
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        #s1:checked ~ .slides {
+            transform: translateX(0%);
+        }
+        #s2:checked ~ .slides {
+            transform: translateX(-20%);
+        }
+        #s3:checked ~ .slides {
+            transform: translateX(-40%);
+        }
+        #s4:checked ~ .slides {
+            transform: translateX(-60%);
+        }
+        #s5:checked ~ .slides {
+            transform: translateX(-80%);
+        }
+
+        .navegacao {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .navegacao label {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.453);
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .estilo {
+            display: inline-block;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .estilo img {
+            border-radius: 15px;
+            border: 3px solid transparent;
+            transition: border 0.3s, transform 0.3s;
+        }
+
+        .estilo:hover img {
+            transform: scale(1.05);
+            border: 3px solid rgb(115, 15, 182); 
+            box-shadow: 0 0 15px rgba(115, 15, 182, 0.6);
+        }
+
+        .estilo input[type="checkbox"] {
+            display: none;
+        }
+
+        .estilo input[type="checkbox"]:checked + img {
+            border: 3px solid #ffcc00; 
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        #s1:checked ~ .navegacao label[for="s1"],
+        #s2:checked ~ .navegacao label[for="s2"],
+        #s3:checked ~ .navegacao label[for="s3"],
+        #s4:checked ~ .navegacao label[for="s4"],
+        #s5:checked ~ .navegacao label[for="s5"] {
+            background: #333;
+        }
+        
+
+        .expandable-container {
+            width: 200px;
+            margin: 20px 2dvb ;
+            position: relative;
+        }
+
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        .expand-label {
+            display: block;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .expand-label img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-description {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 0 10px;
+            border-radius: 10px;
+            box-shadow: 0 20px 10px rgba(0,0,0,0.2);
+            text-align: left;
+            font-size: 14px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+
+        
+    
+        .movie-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.603); /* Preto sólido */
+    color: white;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+/* Quando o mouse passar, cobre completamente */
+.movie-container:hover .movie-overlay {
+    opacity: 1;
+}
+
+.movie-container:hover .movie-poster {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(115, 15, 182, 0.6);
+}
+
+.movie-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.movie-year {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.movie-description {
+    font-size: 13px;
+    line-height: 1.4;
+}
+    </style>
+</head>
+<body>
+<center>
+
+    <header>
+         <a href="index.html"><img src="IMG/hbme.png" alt="Logo do HBme"></a>
+        <div>
+            <h1>HBme</h1>
+            <p>Os melhores filmes a um clique de você!</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogo.html">Início</a></li>
+            <li><a href="assinatura.html">Assinaturas</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="filmes.html">Filmes</a></li>
+            <li><a href="Login.html">Login</a></li>
+        </ul>
+    </nav>
+
+
+    <table>
+    <div class="container">
+    <div class="conteudo">
+        <h1>Maratone dramas, comédias e clássicos da TV.</12>
+    <tr>
+        <th><h2>Séries de comédia</h2></th>
+    </tr>
+    <table>
+    <tr>
+<td>
+    <div class="movie-container">
+        <a href="detalhe2.html">
+            <img src="IMG/suits.webp" class="movie-poster" alt="Suits">
+            <div class="movie-overlay">
+                <div class="movie-title">Suits</div>
+                <div class="movie-year">(2011)</div>
+                <div class="movie-description">Suits acompanha Mike Ross, um jovem gênio sem diploma de Direito, que é contratado por Harvey Specter, um dos melhores advogados de Nova York. Juntos, eles resolvem casos complexos enquanto escondem o segredo que pode destruir suas carreiras.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/patroa.jpg" class="movie-poster" alt="Eu a Patroa e as Crianças">
+            <div class="movie-overlay">
+                <div class="movie-title">Eu a Patroa e as Crianças</div>
+                <div class="movie-year">(2001)</div>
+                <div class="movie-description">A série mostra o dia a dia de Michael Kyle, um pai divertido e cheio de manias, que tenta educar seus três filhos com métodos nada convencionais, enquanto vive situações hilárias ao lado de sua esposa Janet.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/frinds.jpg" class="movie-poster" alt="Friends">
+            <div class="movie-overlay">
+                <div class="movie-title">Friends</div>
+                <div class="movie-year">(1994)</div>
+                <div class="movie-description">Seis amigos — Rachel, Ross, Monica, Chandler, Joey e Phoebe — vivem em Nova York enfrentando juntos os altos e baixos da vida adulta, o amor, o trabalho e muitas situações engraçadas, sempre com bom humor e amizade verdadeira.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/marlon.jpg" class="movie-poster" alt="Marlon">
+            <div class="movie-overlay">
+                <div class="movie-title">Marlon</div>
+                <div class="movie-year">(2017)</div>
+                <div class="movie-description">Marlon Wayne, um pai amoroso e brincalhão que, mesmo após o divórcio, tenta manter uma boa relação com sua ex-esposa e criar os filhos de forma divertida — mesmo que seu jeito exagerado e imaturo cause muitas confusões.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/family.webp" class="movie-poster" alt="Modern Family">
+            <div class="movie-overlay">
+                <div class="movie-title">Modern Family</div>
+                <div class="movie-year">(2009)</div>
+                <div class="movie-description">A série acompanha o dia a dia da família Pritchett-Dunphy-Tucker, mostrando três núcleos familiares diferentes, cheios de situações engraçadas, desafios do cotidiano e muito amor. Com humor e leveza, a série explora a diversidade e os laços familiares de forma moderna e divertida.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/chaves.webp" class="movie-poster" alt="chaves">
+            <div class="movie-overlay">
+                <div class="movie-title">Chaves</div>
+                <div class="movie-year">(1973)</div>
+                <div class="movie-description">Chaves, um menino órfão e inocente que vive em um barril em uma vila mexicana. Junto com seus vizinhos, como Seu Madruga, Dona Florinda e Quico, ele se envolve em situações engraçadas e cheias de confusão, sempre com muito humor e lições de amizade.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/maluco.webp" class="movie-poster" alt="Um Maluco no Pedaço">
+            <div class="movie-overlay">
+                <div class="movie-title">Um Maluco no Pedaço</div>
+                <div class="movie-year">(1990)</div>
+                <div class="movie-description">Will, um adolescente esperto e carismático, vai morar com seus tios ricos no elegante bairro de Bel-Air, em Los Angeles. Lá, ele precisa se adaptar à nova vida enquanto causa muita diversão e choque cultural na família Banks.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/the.webp" class="movie-poster" alt="The Office">
+            <div class="movie-overlay">
+                <div class="movie-title">The Office</div>
+                <div class="movie-year">(2005)</div>
+                <div class="movie-description">A série mostra o dia a dia dos funcionários da Dunder Mifflin, uma empresa de papel na Pensilvânia, sob o olhar do excêntrico gerente Michael Scott. Com muito humor, situações constrangedoras, a série satiriza o ambiente de trabalho e a vida corporativa.</div>
+            </div>
+        </a>
+    </div>
+</td>
+    </tr>
+ 
+    </table>
+    <th><h2>Séries de suspense</h2></th>
+    </tr>
+    <table>
+    <tr>
+ <td>
+    <div class="movie-container">
+            <img src="IMG/true.jpg" class="movie-poster" alt="True Detective">
+            <div class="movie-overlay">
+                <div class="movie-title">True Detective</div>
+                <div class="movie-year">(2014)</div>
+                <div class="movie-description">Investigação criminal complexa que revelando segredos sombrios e dilemas morais dos detetives envolvidos. A série mistura suspense psicológico, drama e mistério em tramas intensas e cheias de reviravoltas.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/bates.avif" class="movie-poster" alt="Bates Motel">
+            <div class="movie-overlay">
+                <div class="movie-title">Bates Motel</div>
+                <div class="movie-year">(2013)</div>
+                <div class="movie-description">Norman Bates e sua mãe tentam recomeçar administrando um motel, mas segredos sombrios logo vêm à tona.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/the st.jpg" class="movie-poster" alt="The Stranger">
+            <div class="movie-overlay">
+                <div class="movie-title">The Stranger</div>
+                <div class="movie-year">(2020)</div>
+                <div class="movie-description">A vida de um homem muda completamente quando uma misteriosa mulher revela um segredo que coloca sua família e sua segurança em risco.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/equa.avif" class="movie-poster" alt="The Equalizer">
+            <div class="movie-overlay">
+                <div class="movie-title">The Equalizer</div>
+                <div class="movie-year">(2021)</div>
+                <div class="movie-description">Uma ex-agente usa suas habilidades para ajudar pessoas em perigo e fazer justiça quando ninguém mais pode.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/full.png" class="movie-poster" alt="Full Circle">
+            <div class="movie-overlay">
+                <div class="movie-title">Full Circle</div>
+                <div class="movie-year">(2023)</div>
+                <div class="movie-description">Um sequestro revela segredos e conexões inesperadas entre várias pessoas, mostrando como suas vidas estão entrelaçadas por um mesmo mistério.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/pll.jpg" class="movie-poster" alt="Pretty Little Liars">
+            <div class="movie-overlay">
+                <div class="movie-title">Pretty Little Liars</div>
+                <div class="movie-year">(2010)</div>
+                <div class="movie-description">Depois do desaparecimento de Alison, as adolescentes Spencer, Aria, Hanna e Emily, agora no ensino médio, têm um novo desafio: desvendar mensagens anônimas ameaçando contar seus segredos.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/origem.avif" class="movie-poster" alt="Origem">
+            <div class="movie-overlay">
+                <div class="movie-title">Origem</div>
+                <div class="movie-year">(2022)</div>
+                <div class="movie-description">Uma família viaja em um trailer quando se perde na estrada. Eles buscam direções em um pequeno povoado, mas logo percebem que estão presos em um loop e não conseguem deixar o lugar, encurralados por forças misteriosas.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/clear.png" class="movie-poster" alt="The Clearing">
+            <div class="movie-overlay">
+                <div class="movie-title">The Clearing</div>
+                <div class="movie-year">(2023)</div>
+                <div class="movie-description">Uma mulher enfrenta seu passado sombrio ao se envolver novamente com uma seita perigosa que ameaça retornar.</div>
+            </div>
+        </a>
+    </div>
+</td>
+    </tr>
+
+    
+
+    </table>
+
+     <th><h2>Séries de romance</h2></th>
+    </tr>
+    <table>
+    <tr>
+ <td>
+    <div class="movie-container">
+            <img src="IMG/amor.webp" class="movie-poster" alt="Será Isso é Amor?">
+            <div class="movie-overlay">
+                <div class="movie-title">Será Isso é Amor?</div>
+                <div class="movie-year">(2020)</div>
+                <div class="movie-description">Uma jovem arquiteta sonhadora e um empresário pragmático se conhecem por acaso e acabam descobrindo que o amor pode surgir nas situações mais inesperadas.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/romance.jpg" class="movie-poster" alt="Romance">
+            <div class="movie-overlay">
+                <div class="movie-title">Romance</div>
+                <div class="movie-year">(2020)</div>
+                <div class="movie-description">Jeremy descobre o Wonderland, um clube de jazz. Entre as fotos penduradas na parede, Jeremy fica fascinado por uma de uma mulher tirada em Biarritz em 1960.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/pouco.avif" class="movie-poster" alt="Derretendo Pouco a Pouco">
+            <div class="movie-overlay">
+                <div class="movie-title">Derretendo Pouco a Pouco</div>
+                <div class="movie-year">(2019)</div>
+                <div class="movie-description">Em 1999, um homem e uma mulher são colocados em uma cápsula de congelamento. Os dois dormem por 20 anos e acordam em 2019, mas o mundo que eles conheciam já não existe mais.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/bri.jpg" class="movie-poster" alt="Bridgerton">
+            <div class="movie-overlay">
+                <div class="movie-title">Bridgerton</div>
+                <div class="movie-year">(2020)</div>
+                <div class="movie-description">Oito irmãos inseparáveis buscam amor e felicidade na alta sociedade de Londres.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/fallen.avif" class="movie-poster" alt="Fallen">
+            <div class="movie-overlay">
+                <div class="movie-title">Fallen</div>
+                <div class="movie-year">(2024)</div>
+                <div class="movie-description">Lucinda Price é enviada para uma clínica psiquiátrica para cumprir pena por um incêndio que ela não se lembra ter cometido. Além disso, o lugar esconde segredos sinistros sobre a verdadeira identidade dos internos.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/quero.jpg" class="movie-poster" alt="Te Quiero">
+            <div class="movie-overlay">
+                <div class="movie-title">Te Quiero</div>
+                <div class="movie-year">(2023)</div>
+                <div class="movie-description">Juan Gris é um rapper enfrentando uma batalha contra a gentrificação de seu bairro. Lola é uma garota de classe alta e filha do dono da construtora que ameaça o bairro de Juan. Quando eles se conhecem, ambos se conectam através da música.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/passaro.jpg" class="movie-poster" alt="O Canto do Pássaro">
+            <div class="movie-overlay">
+                <div class="movie-title">O Canto do Pássaro</div>
+                <div class="movie-year">(2022)</div>
+                <div class="movie-description">Halis Aga, pilar de uma das famílias mais tradicionais de Gaziantep, decide casar seu sobrinho rebelde Ferit para se endireitar. Mas quando a polícia invade sua casa, seu avô se cansa.</div>
+            </div>
+        </a>
+    </div>
+</td>
+<td>
+    <div class="movie-container">
+            <img src="IMG/life.png" class="movie-poster" alt="Love Life">
+            <div class="movie-overlay">
+                <div class="movie-title">Love Life</div>
+                <div class="movie-year">(2020)</div>
+                <div class="movie-description">Darby Carter entre seus 20 e 30 anos, vive seus trabalhos e romances em Nova York, muitas vezes com as inseguranças da juventude borbulhando.</div>
+            </div>
+        </a>
+    </div>
+</td>
+    </tr>
+    </table>
+   
+
+    </div>
+    </div>
+    </div>
+    </table>
+</center>
+    <footer>
+        <p>2025 HBme Mídia. Todos os direitos reservados.<br>contato: HBmecontatos@gmail.com<br></p>
+    </footer>
+</body>
+</html>
+

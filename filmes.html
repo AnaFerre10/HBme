@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBme Destaques</title>
+    <link rel ="icon" href="IMG/hbme.png" type="image/x-icon"/>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            background-color:rgba(255, 255, 255, 0.932);
+            color: rgb(255, 255, 255);
+        }
+
+        header{
+            background-color:rgb(27, 27, 31);
+            color:aliceblue;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header img{
+            width: 90px;
+            height: 100px;
+        }
+
+        nav{
+            background-color: rgb(115,15,182);
+        }
+
+        nav ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li{
+            margin: 0 15px;
+        }
+
+        nav ul li a{
+            color:rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover{
+            background-color:rgb(15, 56, 133);
+            border-radius: 5px;
+        }
+
+        .container{
+            max-width: 100%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .conteudo{
+            margin-bottom: 40px;
+        }
+
+        h2{
+            color:rgb(255, 255, 255);
+        }
+
+        .estilo img{
+            max-width: 400px;
+            display: block;
+            margin: 0px auto;
+            margin-right: 30px; 
+        }
+
+        footer{
+            background-color: rgb(0, 0, 0);
+            color: aliceblue;
+            padding: 15px;
+            text-align: center;
+        }
+
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+
+        h4{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+
+        .carrossel {
+            width: 100%;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(167, 142, 255, 0.3);
+            margin-bottom: 40px;
+        }
+
+        .slides {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.5s ease;
+
+        }
+
+        .slide {
+            width: 20%;
+            flex-shrink: 0;
+
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        #s1:checked ~ .slides {
+            transform: translateX(0%);
+        }
+        #s2:checked ~ .slides {
+            transform: translateX(-20%);
+        }
+        #s3:checked ~ .slides {
+            transform: translateX(-40%);
+        }
+        #s4:checked ~ .slides {
+            transform: translateX(-60%);
+        }
+        #s5:checked ~ .slides {
+            transform: translateX(-80%);
+        }
+
+        .navegacao {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .navegacao label {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.453);
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .estilo {
+            display: inline-block;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .estilo img {
+            border-radius: 15px;
+            border: 3px solid transparent;
+            transition: border 0.3s, transform 0.3s;
+        }
+
+        .estilo:hover img {
+            transform: scale(1.05);
+            border: 3px solid rgb(115, 15, 182); 
+            box-shadow: 0 0 15px rgba(115, 15, 182, 0.6);
+        }
+
+        .estilo input[type="checkbox"] {
+            display: none;
+        }
+
+        .estilo input[type="checkbox"]:checked + img {
+            border: 3px solid #ffcc00; 
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        #s1:checked ~ .navegacao label[for="s1"],
+        #s2:checked ~ .navegacao label[for="s2"],
+        #s3:checked ~ .navegacao label[for="s3"],
+        #s4:checked ~ .navegacao label[for="s4"],
+        #s5:checked ~ .navegacao label[for="s5"] {
+            background: #333;
+        }
+        
+
+        .expandable-container {
+            width: 200px;
+            margin: 20px 2dvb ;
+            position: relative;
+        }
+
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        .expand-label {
+            display: block;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .expand-label img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-description {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 0 10px;
+            border-radius: 10px;
+            box-shadow: 0 20px 10px rgba(0,0,0,0.2);
+            text-align: left;
+            font-size: 14px;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+        }
+
+        
+    
+        .movie-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    width: 200px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.movie-poster {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.603); /* Preto sólido */
+    color: white;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+/* Quando o mouse passar, cobre completamente */
+.movie-container:hover .movie-overlay {
+    opacity: 1;
+}
+
+.movie-container:hover .movie-poster {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(115, 15, 182, 0.6);
+}
+
+.movie-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.movie-year {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.movie-description {
+    font-size: 13px;
+    line-height: 1.4;
+}
+    </style>
+</head>
+<body>
+<center>
+
+    <header>
+         <a href="index.html"><img src="IMG/hbme.png" alt="Logo do HBme"></a>
+        <div>
+            <h1>HBme</h1>
+            <p>Os melhores filmes a um clique de você!</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogo.html">Início</a></li>
+            <li><a href="assinatura.html">Assinaturas</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="filmes.html">Filmes</a></li>
+            <li><a href="Login.html">Login</a></li>
+        </ul>
+    </nav>
+
+
+    <table>
+    <div class="container">
+    <div class="conteudo">
+        <h1>Maratone os melhores filmes!</h1>
+    <tr>
+        <th><h2>Filmes de comédia</h2></th>
+    </tr>
+    <table>
+    <tr>
+<td>
+    <div class="movie-container">
+        <a href="detalhe.html">
+            <img src="IMG/A SOGRA.webp" class="movie-poster" alt="A Sogra Perfeita">
+            <div class="movie-overlay">
+                <div class="movie-title">A Sogra Perfeita</div>
+                <div class="movie-year">(2017)</div>
+                <div class="movie-description">Uma mãe superprotetora decide visitar seu filho e sua nova namorada, causando situações hilárias e constrangedoras.</div>
+            </div>
+        </a>
+    </div>
+</td>
+
+        <td>
+            <div class="movie-container">
+                <img src="IMG/BRANCAS.webp" class="movie-poster" alt="As Branquelas">
+                <div class="movie-overlay">
+                    <div class="movie-title">As Branquelas</div>
+                    <div class="movie-year">(2004)</div>
+                    <div class="movie-description">Dois agentes do FBI desonrados se disfarçam em um esforço para proteger duas herdeiras de um plano de sequestro.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/COLA.webp" class="movie-poster" alt="Vai Que Cola">
+                <div class="movie-overlay">
+                    <div class="movie-title">Vai Que Cola</div>
+                    <div class="movie-year">(2015)</div>
+                    <div class="movie-description">Baseado na série de TV, o filme mostra as confusões dos moradores de uma pensão no Rio de Janeiro.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/VIZINHOS.jpg" class="movie-poster" alt="Vizinhos">
+                <div class="movie-overlay">
+                    <div class="movie-title">Vizinhos</div>
+                    <div class="movie-year">(2014)</div>
+                    <div class="movie-description">Um casal com um bebê recém-nascido declara guerra a uma fraternidade de estudantes que se muda para a casa ao lado.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/SORTE.jpg" class="movie-poster" alt="Até Que a Sorte Nos Separe">
+                <div class="movie-overlay">
+                    <div class="movie-title">Até Que a Sorte Nos Separe</div>
+                    <div class="movie-year">(2012)</div>
+                    <div class="movie-description">Tino, um homem simples, ganha na loteria e sua vida muda completamente, mas nem tudo são flores.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/CRO.jpg" class="movie-poster" alt="Crô">
+                <div class="movie-overlay">
+                    <div class="movie-title">Crô</div>
+                    <div class="movie-year">(2013)</div>
+                    <div class="movie-description">A história de três amigos que tentam sobreviver à violência das favelas do Rio de Janeiro através do poder da escrita.</div>
+                </div>
+            </div>
+        </td> 
+        <td>
+            <div class="movie-container">
+                <img src="IMG/Meet_the_Parents_Capa.jpg" class="movie-poster" alt="Meet the Parents">
+                <div class="movie-overlay">
+                    <div class="movie-title">Meet the Parents</div>
+                    <div class="movie-year">(2000)</div>
+                    <div class="movie-description">Um enfermeiro viaja para conhecer os pais da namorada, mas o pai ex-agente da CIA o coloca à prova.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/FILHO.jpg" class="movie-poster" alt="O Bom Filho à Casa Torna">
+                <div class="movie-overlay">
+                    <div class="movie-title">O Bom Filho à Casa Torna</div>
+                    <div class="movie-year">(2003)</div>
+                    <div class="movie-description">Um homem de 35 anos que ainda mora com os pais precisa provar que é independente para conquistar a mulher que ama.</div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </table>
+    
+    <tr>
+        <th><h2>Filmes de suspense</h2></th>
+    </tr>
+    <table>
+    <tr>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/4.avif" class="movie-poster" alt="Depois do Apocalipse">
+                <div class="movie-overlay">
+                    <div class="movie-title">Depois do Apocalipse</div>
+                    <div class="movie-year">(2021)</div>
+                    <div class="movie-description">Sobreviventes de um apocalipse enfrentam perigos inimagináveis em um mundo pós-catastrófico.</div>
+                </div>
+            </div>
+        </td> 
+        <td>
+            <div class="movie-container">
+                <img src="IMG/5.webp" class="movie-poster" alt="Código Alarum">
+                <div class="movie-overlay">
+                    <div class="movie-title">Código Alarum</div>
+                    <div class="movie-year">(2022)</div>
+                    <div class="movie-description">Um especialista em segurança precisa impedir um ataque cibernético que pode causar o colapso global.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/6.avif" class="movie-poster" alt="Respire">
+                <div class="movie-overlay">
+                    <div class="movie-title">Respire</div>
+                    <div class="movie-year">(2021)</div>
+                    <div class="movie-description">Uma mulher luta para sobreviver em um mundo onde o ar se tornou tóxico e respirar pode ser fatal.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/7.jpg" class="movie-poster" alt="O Rastro">
+                <div class="movie-overlay">
+                    <div class="movie-title">O Rastro</div>
+                    <div class="movie-year">(2020)</div>
+                    <div class="movie-description">Um detetive segue pistas sinistras para capturar um serial killer que deixa marcas peculiares em suas vítimas.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/8.jpg" class="movie-poster" alt="O Exorcista do Papa">
+                <div class="movie-overlay">
+                    <div class="movie-title">O Exorcista do Papa</div>
+                    <div class="movie-year">(2023)</div>
+                    <div class="movie-description">Baseado na história real do exorcista oficial do Vaticano e seus encontros com forças sobrenaturais.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/9.jpg" class="movie-poster" alt="Pecadores">
+                <div class="movie-overlay">
+                    <div class="movie-title">Pecadores</div>
+                    <div class="movie-year">(2022)</div>
+                    <div class="movie-description">Em uma pequena cidade, segredos obscuros emergem quando um assassinato choca a comunidade religiosa.</div>
+                </div>
+            </div>
+        </td> 
+        <td>
+            <div class="movie-container">
+                <img src="IMG/10.avif" class="movie-poster" alt="O Refém: Atentado em Madri">
+                <div class="movie-overlay">
+                    <div class="movie-title">O Refém: Atentado em Madri</div>
+                    <div class="movie-year">(2021)</div>
+                    <div class="movie-description">Baseado em eventos reais, um homem se torna refém durante um atentado terrorista em Madri.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/11.jpg" class="movie-poster" alt="Crepúsculo">
+                <div class="movie-overlay">
+                    <div class="movie-title">Crepúsculo</div>
+                    <div class="movie-year">(2008)</div>
+                    <div class="movie-description">Uma adolescente se apaixona por um vampiro, mergulhando em um mundo de romance sobrenatural e perigo.</div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </table>
+
+    <tr>
+        <th><h2>Filmes de romance</h2></th>
+    </tr>
+    <table>
+    <tr>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/estrela2.jpg" class="movie-poster" alt="A Culpa é das Estrelas">
+                <div class="movie-overlay">
+                    <div class="movie-title">A Culpa é das Estrelas</div>
+                    <div class="movie-year">(2014)</div>
+                    <div class="movie-description">Dois adolescentes com câncer se apaixonam e embarcam em uma jornada emocionante contra o tempo.</div>
+                </div>
+            </div>
+        </td> 
+        <td>
+            <div class="movie-container">
+                <img src="IMG/passos.jpg" class="movie-poster" alt="A Cinco Passos de Você">
+                <div class="movie-overlay">
+                    <div class="movie-title">A Cinco Passos de Você</div>
+                    <div class="movie-year">(2019)</div>
+                    <div class="movie-description">Dois pacientes com fibrose cística se apaixonam, mas devem manter distância para não arriscar suas vidas.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/zumbi1.jpg" class="movie-poster" alt="Meu Namorado é um Zumbi">
+                <div class="movie-overlay">
+                    <div class="movie-title">Meu Namorado é um Zumbi</div>
+                    <div class="movie-year">(2013)</div>
+                    <div class="movie-description">Uma adolescente se apaixona por um zumbi em uma comédia romântica com toques sobrenaturais.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/dd7.jpg" class="movie-poster" alt="Redeeming Love">
+                <div class="movie-overlay">
+                    <div class="movie-title">Redeeming Love</div>
+                    <div class="movie-year">(2022)</div>
+                    <div class="movie-description">Baseado no best-seller, um fazendeiro se casa com uma prostituta na Califórnia durante a corrida do ouro.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/primeira.webp" class="movie-poster" alt="Como Se Fosse a Primeira Vez">
+                <div class="movie-overlay">
+                    <div class="movie-title">Como Se Fosse a Primeira Vez</div>
+                    <div class="movie-year">(2004)</div>
+                    <div class="movie-description">Um mulherengo se apaixona por uma mulher com amnésia que esquece tudo o que aconteceu no day anterior.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/vindas.jpg" class="movie-poster" alt="Idas e Vindas do Amor">
+                <div class="movie-overlay">
+                    <div class="movie-title">Idas e Vindas do Amor</div>
+                    <div class="movie-year">(2021)</div>
+                    <div class="movie-description">Um casal enfrenta os altos e baixos do relacionamento enquanto navega pelas complexidades do amor moderno.</div>
+                </div>
+            </div>
+        </td> 
+        <td>
+            <div class="movie-container">
+                <img src="IMG/b.jpg" class="movie-poster" alt="Plano B">
+                <div class="movie-overlay">
+                    <div class="movie-title">Plano B</div>
+                    <div class="movie-year">(2021)</div>
+                    <div class="movie-description">Uma adolescente embarca em uma viagem inesperada com seu inimigo de infância em busca de uma pílula do dia seguinte.</div>
+                </div>
+            </div>
+        </td>
+        <td>
+            <div class="movie-container">
+                <img src="IMG/ps.jpg" class="movie-poster" alt="P.S. Eu Te Amo">
+                <div class="movie-overlay">
+                    <div class="movie-title">P.S. Eu Te Amo</div>
+                    <div class="movie-year">(2007)</div>
+                    <div class="movie-description">Uma jovem viúva descobre que seu falecido marido deixou uma série de cartas para ajudá-la a seguir em frente.</div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </table>
+
+    </div>
+    </div>
+    </table>
+</center>
+    <footer>
+        <p>2025 HBme Mídia. Todos os direitos reservados.<br>contato: HBmecontatos@gmail.com<br> </p>
+    </footer>
+</body>
+</html>

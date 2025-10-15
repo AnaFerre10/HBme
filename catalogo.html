@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBme Destaques</title>
+    <link rel="icon" href="IMG/hbme.png" type="image/x-icon"/>
+    <style>
+        body{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            background-color:rgba(255, 255, 255, 0.932);
+            color: rgb(255, 255, 255);
+        }
+
+        header{
+            background-color:rgb(27, 27, 31);
+            color:aliceblue;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header img{
+            width: 90px;
+            height: 100px;
+        }
+
+        nav{
+            background-color: rgb(115,15,182);
+        }
+
+        nav ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li{
+            margin: 0 15px;
+        }
+
+        nav ul li a{
+            color:rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover{
+            background-color:rgb(15, 56, 133);
+            border-radius: 5px;
+        }
+
+        .container{
+            max-width: 100%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .conteudo{
+            margin-bottom: 40px;
+        }
+
+        h2{
+            color:rgb(255, 255, 255);
+        }
+
+        .estilo img{
+            max-width: 400px;
+            display: block;
+            margin: 0px auto;
+            margin-right: 30px; 
+        }
+
+        footer{
+            background-color: rgb(0, 0, 0);
+            color: aliceblue;
+            padding: 15px;
+            text-align: center;
+        }
+
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+
+        h4{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .carrossel {
+            width: 100%;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(167, 142, 255, 0.3);
+            margin-bottom: 40px;
+        }
+
+        .slides {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.5s ease;
+
+        }
+
+        .slide {
+            width: 20%;
+            flex-shrink: 0;
+
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        #s1:checked ~ .slides {
+            transform: translateX(0%);
+        }
+        #s2:checked ~ .slides {
+            transform: translateX(-20%);
+        }
+        #s3:checked ~ .slides {
+            transform: translateX(-40%);
+        }
+        #s4:checked ~ .slides {
+            transform: translateX(-60%);
+        }
+        #s5:checked ~ .slides {
+            transform: translateX(-80%);
+        }
+
+        .navegacao {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .navegacao label {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.453);
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+        }
+.estilo {
+    display: inline-block;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+
+.estilo img {
+    border-radius: 15px;
+    border: 3px solid transparent;
+    transition: border 0.3s, transform 0.3s;
+}
+
+.estilo:hover img {
+    transform: scale(1.05);
+    border: 3px solid rgb(115, 15, 182); 
+    box-shadow: 0 0 15px rgba(115, 15, 182, 0.6);
+}
+
+
+.estilo input[type="checkbox"] {
+    display: none;
+}
+
+.estilo input[type="checkbox"]:checked + img {
+    border: 3px solid #ffcc00; 
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+    transform: scale(1.05);
+}
+
+        #s1:checked ~ .navegacao label[for="s1"],
+        #s2:checked ~ .navegacao label[for="s2"],
+        #s3:checked ~ .navegacao label[for="s3"],
+        #s4:checked ~ .navegacao label[for="s4"],
+        #s5:checked ~ .navegacao label[for="s5"] {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+<center>
+
+    <header>
+        <a href="index.html"><img src="IMG/hbme.png" alt="Logo do HBme"></a>
+        <div>
+            <h1>HBme</h1>
+            <p>Os melhores filmes a um clique de você!</p>
+        </div>
+    </header>
+
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogo.html">Início</a></li>
+            <li><a href="assinatura.html">Assinaturas</a></li>
+            <li><a href="series.html">Series</a></li>
+            <li><a href="filmes.html">Filmes</a></li>
+           
+        </ul>
+    </nav>
+    <div class="carrossel"style="max-width:1200px; margin: 28px auto;">
+
+        <input type="radio" name="slide" id="s1" checked />
+        <input type="radio" name="slide" id="s2" />
+        <input type="radio" name="slide" id="s3" />
+        <input type="radio" name="slide" id="s4" />
+        <input type="radio" name="slide" id="s5" />
+
+        <div class="slides">
+            <div class="slide">
+                <img src="IMG/the last of us.avif" alt="Imagem 1" />
+            </div>
+            <div class="slide">
+                <img src="IMG/pecadores.jpg" alt="Imagem 2" />
+            </div>
+            <div class="slide">
+                <img src="IMG/a morte do demonio(2).png" alt="Imagem 3" />
+            </div>
+            <div class="slide">
+                <img src="IMG/oppenheimer.webp" alt="Imagem 4" />
+            </div>
+            <div class="slide">
+                <img src="IMG/game of thrones.jpeg" alt="Imagem 5" />
+            </div>
+        </div>
+
+        <div class="navegacao">
+            <label for="s1"></label>
+            <label for="s2"></label>
+            <label for="s3"></label>
+            <label for="s4"></label>
+            <label for="s5"></label>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="conteudo">
+            <h2>ENCONTRE FILMES DE TODOS OS TEMAS</h2>
+            <h3>TOP 10 NO BRASIL</h3>
+            <table>
+                <tr>
+                    <td><div class="estilo"><a href="detalhe3.html"><img src="IMG/sonic.webp" width = "200" height="300"></td> </a>
+                    <td><div class="estilo"><img src="IMG/prem+¦.jpg" width="200" height="300"></div></td>
+                    <td><div class="estilo"><img src="IMG/mine.jpg" width="200" height="300"></div></td>
+                    <td><div class="estilo"><img src="IMG/intru.jpg" width="200" height="300"></div></td>
+                    <td><div class="estilo"><img src="IMG/gum.jpg" width="200" height="300"></div></td>
+                </tr>
+                <tr>
+                    <td><h4>Sonic 3: O filme</h4></td>
+                    <td><h4>Premonição 6: Laços <br> de Sangue</h4></td>
+                    <td><h4>Minecraft Story Mode</h4></td>
+                    <td><h4>O intruso</h4></td>
+                    <td><h4>O Mundo <br>Maravilhosamente <br>Incrível de Gumball</h4></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <td><div class="estilo"><img src="IMG/abiga.avif" width="200" height="300"></div></td>
+                    <td><div class="estilo"><img src="IMG/nova.webp" width="200" height="300"></div></td>
+                    <td><div class="estilo"><img src="IMG/verda.jpg" width="200" height="300"></div></td>
+                    <td><div class="estilo"><img src="IMG/aneis.png" width="200" height="300"></div></td>
+                    <td><div class="estilo"><img src="IMG/chiq.jpg" width="200" height="300"></div></td>
+                </tr>
+                <tr>
+                    <td><h4>Abigail</h4></td>
+                    <td><h4>Os novatos</h4></td>
+                    <td><h4>Verdade ou Desafio</h4></td>
+                    <td><h4>Senhor dos Anéis</h4></td>
+                    <td><h4>Chiquititas</h4></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <table>
+    <tr>
+    <tr>
+        <th><h3>CONTINUAR ASSISTINDO</h3></th>
+    </tr>
+        <td><div class="estilo"><img src="IMG/projetoX.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/mk1.jpeg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/brick.webp" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/agatha.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/quiosque.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/round.webp" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/tit.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/vinga.webp" width = "200" height="300"></td>
+    </tr>
+        <td><h4>Projeto X</h4></td>
+        <td><h4>Mortal Kombat 1</h4></td>
+        <td><h4>Brick</h4></td>
+        <td><h4>Agatha Desde<br>Sempre</h4></td>
+        <td><h4>O Quiosque</h4></td>
+        <td><h4>Round 6</h4></td>
+        <td><h4>Titans</h4></td>
+        <td><h4>Vingadores</h4></td>
+    
+
+    </table>
+    <table>
+    <tr>
+    <tr>
+        <th><h3>NOVIDADES DA HBme</h3></th>
+    </tr>
+        <td><div class="estilo"><img src="IMG/coringa.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/dtr est.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/gg.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/kig.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/montanha.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/intru.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/shazam.jpg" width = "200" height="300"></td>
+        <td><div class="estilo"><img src="IMG/wanda.jpg" width = "200" height="300"></td>
+    </tr>
+        <td><h4>Coringa</h4></td>
+        <td><h4>Doutor Estranho</h4></td>
+        <td><h4>Gente Grande</h4></td>
+        <td><h4>Kigsman</h4></td>
+        <td><h4>Perdido na<br>Montanha</h4></td>
+        <td><h4>O Intruso</h4></td>
+        <td><h4>Shazam</h4></td>
+        <td><h4>Wanda Vision</h4></td>
+        
+    </table>
+
+</center>
+
+    <footer>
+        <p>2025 HBme Mídia. Todos os direitos reservados.<br>contato: HBmecontatos@gmail.com
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastre-se Aqui!</title>
+    <link rel="icon" href="IMG/HBME.png" type="image/x-icon" />
+    
+    <!-- Estilo básico interno (pode ser movido para style.css) -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-image: url('IMG/fundo.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: aliceblue;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgb(15, 56, 133);
+            border-radius: 5px;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: 60px auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #8d4ec0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #692ba1;
+        }
+
+        .form-container p {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .form-container a {
+            color: #8d4ec0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegação -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalogo.html">Início</a></li>
+                <li><a href="assinatura.html">Assinaturas</a></li>
+                <li><a href="series.html">Series</a></li>
+                <li><a href="filmes.html">Filmes</a></li>
+                <li><a href="Login.html">Login</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Formulário de Cadastro -->
+    <div class="form-container">
+        <h1>Formulário de Cadastro</h1>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="input-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+            <div class="input-group">
+                <label for="confirmar-senha">Confirmar Senha:</label>
+                <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+            </div>
+            <div class="input-group">
+                <label for="sexo">Sexo:</label>
+                <select id="sexo" name="sexo" required>
+                    <option value="masculino">Masculino</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">Cadastrar</button>
+            <p>Já tem uma conta? <a href="Login.html">Faça Login aqui</a></p>
+        </form>
+    </div>
+
+</body>
+</html>
